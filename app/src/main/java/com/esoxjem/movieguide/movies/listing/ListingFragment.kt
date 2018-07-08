@@ -20,14 +20,14 @@ class ListingFragment : Fragment(), ListingView {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        (context.applicationContext as MovieGuideApp).createListingComponent().inject(this)
+        (context?.applicationContext as MovieGuideApp).createListingComponent().inject(this)
     }
 
-    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater?.inflate(R.layout.fragment_listing, container, false)
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        return inflater.inflate(R.layout.fragment_listing, container, false)
     }
 
-    override fun onViewCreated(view: View?, savedInstanceState: Bundle?) {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initLayout()
         presenter.setView(this)
@@ -35,7 +35,7 @@ class ListingFragment : Fragment(), ListingView {
 
     override fun onDestroyView() {
         super.onDestroyView()
-        (context.applicationContext as MovieGuideApp).releaseListingComponent()
+        (context?.applicationContext as MovieGuideApp).releaseListingComponent()
     }
 
     private fun initLayout() {
